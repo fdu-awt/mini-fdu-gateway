@@ -8,7 +8,7 @@
 
 > 不选择进行多阶段构建，而是本机构建 jar 包，因为多阶段构建更慢
 
-1. 打包jar：maven-->MyTodo-->生命周期-->package （如果测试无法通过，可能需要使用`@Disabled`注解禁用测试）
+1. 打包jar：maven-->项目名称-->生命周期-->package （如果测试无法通过，可能需要使用`@Disabled`注解禁用测试）
 
 2. 构建docker镜像
 
