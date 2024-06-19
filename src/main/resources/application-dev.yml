@@ -1,3 +1,51 @@
 spring:
-  profiles:
-    active: dev
+  application:
+    name: mini-fdu-gateway
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            # whether to allow cookies to cross domains
+            allowCredentials: true
+            # urls that are allowed to cross domains, * for all urls
+            allowedOriginPatterns: '*'
+            # methods that are allowed to cross domains, * for all methods
+            allowedMethods: '*'
+            allowedHeaders:
+              - Authorization
+              - Content-Type
+              - X-Requested-With
+            # cross region preflight time
+            maxAge: 3600
+      routes:
+        - id: user-service
+          uri: http://localhost:8799
+          predicates:
+            - Path=/user-service/**
+        - id: message-service
+          uri: http://localhost:8798
+          predicates:
+            - Path=/message-service/**
+        - id: chat-service
+          uri: ws://localhost:8798
+          predicates:
+            - Path=/chat/**
+        - id: game-service
+          uri: ws://localhost:8798
+          predicates:
+            - Path=/game/**
+        - id: video-chat-service
+          uri: ws://localhost:8798
+          predicates:
+            - Path=/video-chat/**
+        - id: study-service
+          uri: http://localhost:8797
+          predicates:
+            - Path=/study-service/**
+        - id: ai-service
+          uri: http://localhost:8796
+          predicates:
+            - Path=/AI-service/**
+server:
+  port: 8700
