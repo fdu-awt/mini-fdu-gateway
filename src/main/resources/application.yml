@@ -46,6 +46,6 @@ spring:
         - id: ai-service
           uri: http://localhost:8796
           predicates:
-            - Path=/ai-service/**
+            - Path=/AI-service/**
 server:
   port: 8700
